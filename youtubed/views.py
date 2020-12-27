@@ -15,7 +15,7 @@ class homeView(View):
     def get(self, request):
         self.context ['get']  = "This is get"
         pwd = os.path.dirname(__file__)
-        file_path = pwd + '/MyTube_Video.mp4'
+        file_path = pwd + '/InnerTube_Video.mp4'
         if os.path.exists(file_path):
             os.remove(file_path)
         return render(request, self.template_name, self.context)
@@ -31,7 +31,7 @@ class homeView(View):
         self.context ['post']  = "This is post"
         url = request.POST["link"]
         pwd = os.path.dirname(__file__)
-        file_path = pwd + '/MyTube_Video.mp4'
+        file_path = pwd + '/InnerTube_Video.mp4'
         if os.path.exists(file_path):
             os.remove(file_path)
 
@@ -45,13 +45,13 @@ class homeView(View):
             # which was imported in the beginning 
             stream = video.streams.get_by_itag(22)
             print("downloading...")
-            stream.download(os.path.dirname(__file__), filename="MyTube_Video")
+            stream.download(os.path.dirname(__file__), filename="InnerTube_Video")
             
 
-            file_path = pwd + '/MyTube_Video.mp4'
+            file_path = pwd + '/InnerTube_Video.mp4'
             if os.path.exists(file_path):
                 with open(file_path, 'rb') as fh:
-                    response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+                    response = HttpResponse(fh.read(), content_type="application/mp4")
                     response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
                 return response
             raise Http404
