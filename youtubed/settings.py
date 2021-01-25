@@ -23,12 +23,12 @@ from decouple import config
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x$e#%0!i&+j1-elv0#rp&^7t#x&z54i5^0wj3w1_+eq8atvywz'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'innertube.herokuapp.com']
 
 
 # Application definition
